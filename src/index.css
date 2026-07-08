@@ -149,6 +149,29 @@ h1 {
   -webkit-text-fill-color: transparent;
 }
 
+.hero-title {
+  margin: 0 0 16px;
+  font-family: "Outfit", sans-serif;
+  font-size: clamp(3rem, 7.5vw, 5.8rem);
+  font-weight: 900;
+  line-height: 0.95;
+  letter-spacing: -3px;
+  background: linear-gradient(135deg, #ffffff 30%, #64748b 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-transform: uppercase;
+}
+
+.hero-subtitle {
+  font-family: "Outfit", sans-serif;
+  font-size: clamp(1.35rem, 3.2vw, 2.1rem);
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.5px;
+  color: var(--body);
+  margin: 0 0 24px;
+}
+
 h2 {
   margin: 0;
   font-family: "Outfit", sans-serif;

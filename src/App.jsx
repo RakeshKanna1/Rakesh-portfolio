@@ -2,19 +2,8 @@ import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import SpotlightCard from './components/SpotlightCard/SpotlightCard';
-import DecryptedText from './components/DecryptedText/DecryptedText';
-import ShinyText from './components/ShinyText/ShinyText';
-import Magnet from './components/Magnet/Magnet';
-import TextPressure from './components/TextPressure/TextPressure';
-import FuzzyText from './components/FuzzyText/FuzzyText';
-import { CardContainer, CardBody, CardItem } from './components/ThreeDCard/ThreeDCard';
-import { ChromaCardContainer, ChromaCardBody, ChromaCardItem } from './components/ChromaCard/ChromaCard';
-import GlitchText from './components/GlitchText/GlitchText';
-import GlassTiles from './components/GlassTiles/GlassTiles';
 import LightRays from './components/LightRays/LightRays';
 import LogoLoop from './components/LogoLoop/LogoLoop';
-import SplitText from './components/SplitText/SplitText';
-import CustomCursor from './components/CustomCursor/CustomCursor';
 import rakeshPhoto from './assets/rakesh-photo.jpg';
 import {
   SiReact,
@@ -58,14 +47,6 @@ const techLogos = [
   { node: <DiVisualstudio color="#007ACC" />, title: "VS Code", href: "https://code.visualstudio.com" }
 ];
 
-const featuredTools = [
-  { node: <SiReact color="#61DAFB" />, title: "React", href: "https://react.dev", color: "rgba(97, 218, 251, 0.18)" },
-  { node: <SiNextdotjs color="#ffffff" />, title: "Next.js", href: "https://nextjs.org", color: "rgba(255, 255, 255, 0.18)" },
-  { node: <SiJavascript color="#F7DF1E" />, title: "JavaScript", href: "https://developer.mozilla.org/en-US/docs/Web/JavaScript", color: "rgba(247, 223, 30, 0.18)" },
-  { node: <SiSupabase color="#3ECF8E" />, title: "Supabase", href: "https://supabase.com", color: "rgba(62, 207, 142, 0.18)" },
-  { node: <SiTailwindcss color="#06B6D4" />, title: "Tailwind", href: "https://tailwindcss.com", color: "rgba(6, 182, 212, 0.18)" }
-];
-
 export default function App() {
   const projectsSectionRef = useRef(null);
   const projectsHeaderRef = useRef(null);
@@ -74,16 +55,12 @@ export default function App() {
   const project3Ref = useRef(null);
   const project4Ref = useRef(null);
 
-  const [glitchTrigger, setGlitchTrigger] = useState(false);
   const [imageError, setImageError] = useState(false);
 
   useEffect(() => {
     const mediaQuery = window.matchMedia('(min-width: 769px)');
     
     let ctx = gsap.context(() => {
-      // Trigger site name/logo glitch at the very beginning of page load
-      setGlitchTrigger(true);
-
       // --- 1. Page Entrance Animations (Reveal one by one on load) ---
       const entranceTl = gsap.timeline({ defaults: { ease: 'power3.out' } });
 
@@ -98,15 +75,21 @@ export default function App() {
         '-=0.5'
       );
 
-      entranceTl.fromTo('.text-pressure-wrapper', 
-        { y: 40, opacity: 0, scaleY: 0.8 }, 
-        { y: 0, opacity: 1, scaleY: 1, duration: 0.8 },
+      entranceTl.fromTo('.hero-title', 
+        { y: 30, opacity: 0 }, 
+        { y: 0, opacity: 1, duration: 0.8 },
+        '-=0.4'
+      );
+
+      entranceTl.fromTo('.hero-subtitle', 
+        { y: 25, opacity: 0 }, 
+        { y: 0, opacity: 1, duration: 0.7 },
         '-=0.4'
       );
 
       entranceTl.fromTo('.hero-text', 
-        { y: 25, opacity: 0 }, 
-        { y: 0, opacity: 1, duration: 0.7 },
+        { y: 20, opacity: 0 }, 
+        { y: 0, opacity: 1, duration: 0.6 },
         '-=0.4'
       );
 
@@ -136,7 +119,7 @@ export default function App() {
       const isMobile = !mediaQuery.matches;
       const scrollStartThreshold = isMobile ? 'top bottom-=40px' : 'top bottom-=100px';
 
-      // Helper to generate consistent scroll-driven reveals (Goal 1)
+      // Helper to generate consistent scroll-driven reveals
       const createScrollReveal = (triggerSelector, targetsSelector, staggerAmount = 0.15) => {
         gsap.set(targetsSelector, { opacity: 0, y: startY });
 
@@ -157,7 +140,7 @@ export default function App() {
         );
       };
 
-      // Helper for secondary headings to sharpen into focus (Blur Highlight) as part of scroll reveal
+      // Helper for secondary headings to sharpen into focus as part of scroll reveal
       const createHeadingReveal = (triggerSelector, headingSelector) => {
         gsap.set(headingSelector, { opacity: 0, y: startY, filter: 'blur(12px)' });
 
@@ -178,7 +161,7 @@ export default function App() {
         );
       };
 
-      // --- 2. Scroll-Driven Reveals (Goal 1 & Goal 2-2: triggered on entering viewport) ---
+      // --- 2. Scroll-Driven Reveals (triggered on entering viewport) ---
       // About Section
       createHeadingReveal('.about-section', '.about-section h2');
       createScrollReveal('.about-section', '.about-section .eyebrow, .about-section p', 0.2);
@@ -187,17 +170,16 @@ export default function App() {
       createHeadingReveal('.projects-pin-section', '.projects-header-block h2');
       createScrollReveal('.projects-pin-section', '.projects-header-block .eyebrow, .projects-header-block .scroll-hint-label', 0.15);
 
-      // Skills Section Heading & Glass Tiles
+      // Skills Section Heading & Logo Marquee
       createHeadingReveal('.skills-section', '.skills-section h2');
       createScrollReveal('.skills-section', '.skills-section .eyebrow', 0);
-      createScrollReveal('.skills-section', '.skills-section .glass-tiles-container', 0);
       createScrollReveal('.skills-section', '.skills-section .logoloop', 0);
-      createScrollReveal('.skills-section .skills-grid', '.skills-section .skill-3d-wrapper', 0.15);
+      createScrollReveal('.skills-section .skills-grid', '.skills-section .skill-spotlight-card', 0.15);
 
-      // Experience Section Heading
+      // Experience Section Heading & Timeline Cards
       createHeadingReveal('#experience', '#experience h2');
       createScrollReveal('#experience', '#experience .eyebrow', 0);
-      createScrollReveal('#experience .timeline', '#experience article', 0.2);
+      createScrollReveal('#experience .timeline', '#experience .experience-card', 0.2);
 
       // Contact Section
       createHeadingReveal('.contact-section', '.contact-section h2');
@@ -268,8 +250,7 @@ export default function App() {
 
   return (
     <div className="app">
-      <CustomCursor />
-      {/* LightRays Backdrop */}
+      {/* LightRays Backdrop: The single signature 'wow' moment */}
       <div className="bg-lightrays-wrapper">
         <LightRays
           raysOrigin="top-center"
@@ -283,13 +264,12 @@ export default function App() {
           distortion={0.01}
         />
       </div>
+
       <header className="site-header">
-        <Magnet padding={25} magnetStrength={3}>
-          <a className="brand" href="#top" aria-label="Rakesh Kanna home">
-            <GlitchText text="RK" trigger={glitchTrigger} className="brand-mark" />
-            <DecryptedText text="Rakesh Kanna" animateOn="hover" speed={45} />
-          </a>
-        </Magnet>
+        <a className="brand" href="#top" aria-label="Rakesh Kanna home">
+          <span className="brand-mark">RK</span>
+          <span>Rakesh Kanna</span>
+        </a>
         <nav className="nav-links" aria-label="Primary navigation">
           <a href="#work">Work</a>
           <a href="#skills">Skills</a>
@@ -301,37 +281,11 @@ export default function App() {
       <main id="top">
         <section className="hero">
           <div className="hero-copy">
-            <p className="eyebrow">
-              <DecryptedText text="Frontend Developer" animateOn="view" speed={40} />
-            </p>
+            <p className="eyebrow">Frontend Developer</p>
             
-            {/* Dynamic mouse-scalable title pressure */}
-            <div className="text-pressure-wrapper" style={{ position: 'relative', height: '110px', width: '100%', marginBottom: '18px', textAlign: 'left' }}>
-              <TextPressure
-                text="RAKESH KANNA"
-                fontFamily="Outfit"
-                fontUrl="https://fonts.googleapis.com/css2?family=Outfit:wght@900&display=swap"
-                textColor="#ffffff"
-                minFontSize={36}
-                flex={false}
-              />
-            </div>
+            <h1 className="hero-title">RAKESH KANNA</h1>
+            <h2 className="hero-subtitle">I build clean React interfaces for the web.</h2>
 
-            <h1>
-              <SplitText
-                text="I build clean React interfaces for the web."
-                className="hero-subtitle-split"
-                delay={40}
-                duration={0.65}
-                ease="power3.out"
-                splitType="words"
-                from={{ opacity: 0, y: 30 }}
-                to={{ opacity: 1, y: 0 }}
-                threshold={0.05}
-                textAlign="left"
-                tag="span"
-              />
-            </h1>
             <p className="hero-text">
               Computer Science Engineering student focused on React.js, JavaScript,
               responsive UI, and practical user experiences. I am looking for frontend
@@ -339,12 +293,8 @@ export default function App() {
               and ship real product work.
             </p>
             <div className="hero-actions">
-              <Magnet padding={15} magnetStrength={5}>
-                <a className="btn btn-primary" href="#work">View Work</a>
-              </Magnet>
-              <Magnet padding={15} magnetStrength={5}>
-                <a className="btn btn-secondary" href="Rakesh_Kanna_Resume.pdf" download>Download Resume</a>
-              </Magnet>
+              <a className="btn btn-primary" href="#work">View Work</a>
+              <a className="btn btn-secondary" href="Rakesh_Kanna_Resume.pdf" download>Download Resume</a>
             </div>
             <div className="profile-meta" aria-label="Profile highlights">
               <span>BE CSE 2026</span>
@@ -355,51 +305,31 @@ export default function App() {
           </div>
 
           <aside className="profile-card-container">
-            <CardContainer containerClassName="profile-3d-wrapper" className="w-full">
-              <CardBody className="profile-card">
-                <CardItem translateZ={50} className="photo-wrap">
-                  {!imageError ? (
-                    <img 
-                      src={rakeshPhoto} 
-                      alt="Rakesh Kanna M" 
-                      onError={() => setImageError(true)} 
-                    />
-                  ) : (
-                    <div className="profile-placeholder">
-                      <span>RK</span>
-                    </div>
-                  )}
-                </CardItem>
-                <div className="profile-card-body">
-                  <CardItem translateZ={40} className="role">
-                    React Frontend Developer
-                  </CardItem>
-                  <CardItem translateZ={60} as="h2">
-                    Rakesh Kanna M
-                  </CardItem>
-                  <CardItem translateZ={40} as="p">
-                    Available for frontend internships and fresher roles.
-                  </CardItem>
-                  <div className="profile-links">
-                    <CardItem translateZ={50} as="span">
-                      <Magnet padding={15} magnetStrength={4}>
-                        <a href="mailto:12k21rakeshkannam@gmail.com">Email</a>
-                      </Magnet>
-                    </CardItem>
-                    <CardItem translateZ={50} as="span">
-                      <Magnet padding={15} magnetStrength={4}>
-                        <a href="https://github.com/Rakeshkanna1" target="_blank" rel="noreferrer">GitHub</a>
-                      </Magnet>
-                    </CardItem>
-                    <CardItem translateZ={50} as="span">
-                      <Magnet padding={15} magnetStrength={4}>
-                        <a href="https://www.linkedin.com/in/rakesh-kanna-649b8b2b7/" target="_blank" rel="noreferrer">LinkedIn</a>
-                      </Magnet>
-                    </CardItem>
+            <SpotlightCard className="profile-card" spotlightColor="rgba(248, 250, 252, 0.06)">
+              <div className="photo-wrap">
+                {!imageError ? (
+                  <img 
+                    src={rakeshPhoto} 
+                    alt="Rakesh Kanna M" 
+                    onError={() => setImageError(true)} 
+                  />
+                ) : (
+                  <div className="profile-placeholder">
+                    <span>RK</span>
                   </div>
+                )}
+              </div>
+              <div className="profile-card-body">
+                <span className="role">React Frontend Developer</span>
+                <h2>Rakesh Kanna M</h2>
+                <p>Available for frontend internships and fresher roles.</p>
+                <div className="profile-links">
+                  <a href="mailto:12k21rakeshkannam@gmail.com">Email</a>
+                  <a href="https://github.com/Rakeshkanna1" target="_blank" rel="noreferrer">GitHub</a>
+                  <a href="https://www.linkedin.com/in/rakesh-kanna-649b8b2b7/" target="_blank" rel="noreferrer">LinkedIn</a>
                 </div>
-              </CardBody>
-            </CardContainer>
+              </div>
+            </SpotlightCard>
           </aside>
         </section>
 
@@ -441,126 +371,78 @@ export default function App() {
 
             <div className="project-slides-wrap">
               <div className="project-slide-container" ref={project1Ref}>
-                <ChromaCardContainer containerClassName="project-3d-wrapper" className="w-full">
-                  <ChromaCardBody>
-                    <SpotlightCard className="project-spotlight-card" spotlightColor="rgba(59, 130, 246, 0.12)">
-                      <ChromaCardItem translateZ={40} className="project-number">
-                        <FuzzyText fontSize="1.45rem" color="var(--clay)" hoverIntensity={0.6} baseIntensity={0.12} enableHover={true} glitchMode={true}>
-                          01
-                        </FuzzyText>
-                      </ChromaCardItem>
-                      <div className="project-content">
-                        <h3>
-                          <ChromaCardItem translateZ={60} style={{ display: 'inline-block' }}>
-                            <ShinyText text="Rakexura Store" speed={3.5} shineColor="#a5f3fc" color="#ffffff" />
-                          </ChromaCardItem>
-                        </h3>
-                        <ChromaCardItem translateZ={45} as="p">
-                          A production-oriented game marketplace built with Next.js 15 App Router and React 19.
-                          Integrates Supabase Auth, PostgreSQL, Storage, Realtime tables, Framer Motion transitions, and Zustand state management.
-                        </ChromaCardItem>
-                        <ChromaCardItem translateZ={50} className="project-tags">
-                          <span>Next.js 15</span>
-                          <span>Supabase</span>
-                          <span>Tailwind CSS v4</span>
-                          <span>Framer Motion</span>
-                        </ChromaCardItem>
-                      </div>
-                    </SpotlightCard>
-                  </ChromaCardBody>
-                </ChromaCardContainer>
+                <SpotlightCard className="project-spotlight-card" spotlightColor="rgba(248, 250, 252, 0.06)">
+                  <span className="project-number">01</span>
+                  <div className="project-content">
+                    <h3>Rakexura Store</h3>
+                    <p>
+                      A production-oriented game marketplace built with Next.js 15 App Router and React 19.
+                      Integrates Supabase Auth, PostgreSQL, Storage, Realtime tables, Framer Motion transitions, and Zustand state management.
+                    </p>
+                    <div className="project-tags">
+                      <span>Next.js 15</span>
+                      <span>Supabase</span>
+                      <span>Tailwind CSS v4</span>
+                      <span>Framer Motion</span>
+                    </div>
+                  </div>
+                </SpotlightCard>
               </div>
 
               <div className="project-slide-container" ref={project2Ref}>
-                <ChromaCardContainer containerClassName="project-3d-wrapper" className="w-full">
-                  <ChromaCardBody>
-                    <SpotlightCard className="project-spotlight-card" spotlightColor="rgba(59, 130, 246, 0.12)">
-                      <ChromaCardItem translateZ={40} className="project-number">
-                        <FuzzyText fontSize="1.45rem" color="var(--clay)" hoverIntensity={0.6} baseIntensity={0.12} enableHover={true} glitchMode={true}>
-                          02
-                        </FuzzyText>
-                      </ChromaCardItem>
-                      <div className="project-content">
-                        <h3>
-                          <ChromaCardItem translateZ={60} style={{ display: 'inline-block' }}>
-                            <ShinyText text="Rakexura Price Tracker" speed={3.5} shineColor="#a5f3fc" color="#ffffff" />
-                          </ChromaCardItem>
-                        </h3>
-                        <ChromaCardItem translateZ={45} as="p">
-                          A FastAPI and React monorepo tracking marketplace game prices.
-                          Features automated database scraping pipelines, MongoDB Atlas storage, and interactive price history graphs.
-                        </ChromaCardItem>
-                        <ChromaCardItem translateZ={50} className="project-tags">
-                          <span>FastAPI</span>
-                          <span>React & Vite</span>
-                          <span>MongoDB</span>
-                          <span>Tailwind CSS</span>
-                        </ChromaCardItem>
-                      </div>
-                    </SpotlightCard>
-                  </ChromaCardBody>
-                </ChromaCardContainer>
+                <SpotlightCard className="project-spotlight-card" spotlightColor="rgba(248, 250, 252, 0.06)">
+                  <span className="project-number">02</span>
+                  <div className="project-content">
+                    <h3>Rakexura Price Tracker</h3>
+                    <p>
+                      A FastAPI and React monorepo tracking marketplace game prices.
+                      Features automated database scraping pipelines, MongoDB Atlas storage, and interactive price history graphs.
+                    </p>
+                    <div className="project-tags">
+                      <span>FastAPI</span>
+                      <span>React & Vite</span>
+                      <span>MongoDB</span>
+                      <span>Tailwind CSS</span>
+                    </div>
+                  </div>
+                </SpotlightCard>
               </div>
 
               <div className="project-slide-container" ref={project3Ref}>
-                <ChromaCardContainer containerClassName="project-3d-wrapper" className="w-full">
-                  <ChromaCardBody>
-                    <SpotlightCard className="project-spotlight-card" spotlightColor="rgba(59, 130, 246, 0.12)">
-                      <ChromaCardItem translateZ={40} className="project-number">
-                        <FuzzyText fontSize="1.45rem" color="var(--clay)" hoverIntensity={0.6} baseIntensity={0.12} enableHover={true} glitchMode={true}>
-                          03
-                        </FuzzyText>
-                      </ChromaCardItem>
-                      <div className="project-content">
-                        <h3>
-                          <ChromaCardItem translateZ={60} style={{ display: 'inline-block' }}>
-                            <ShinyText text="Rockstar Bot" speed={3.5} shineColor="#a5f3fc" color="#ffffff" />
-                          </ChromaCardItem>
-                        </h3>
-                        <ChromaCardItem translateZ={45} as="p">
-                          An automated Telegram bot that connects to the Gmail API using OAuth2, retrieves 2FA logins via custom email filters, and delivers them instantly to user groups.
-                        </ChromaCardItem>
-                        <ChromaCardItem translateZ={50} className="project-tags">
-                          <span>Python</span>
-                          <span>Telegram API</span>
-                          <span>Gmail API</span>
-                          <span>SQLite</span>
-                        </ChromaCardItem>
-                      </div>
-                    </SpotlightCard>
-                  </ChromaCardBody>
-                </ChromaCardContainer>
+                <SpotlightCard className="project-spotlight-card" spotlightColor="rgba(248, 250, 252, 0.06)">
+                  <span className="project-number">03</span>
+                  <div className="project-content">
+                    <h3>Rockstar Bot</h3>
+                    <p>
+                      An automated Telegram bot that connects to the Gmail API using OAuth2, retrieves 2FA logins via custom email filters, and delivers them instantly to user groups.
+                    </p>
+                    <div className="project-tags">
+                      <span>Python</span>
+                      <span>Telegram API</span>
+                      <span>Gmail API</span>
+                      <span>SQLite</span>
+                    </div>
+                  </div>
+                </SpotlightCard>
               </div>
 
               <div className="project-slide-container" ref={project4Ref}>
-                <ChromaCardContainer containerClassName="project-3d-wrapper" className="w-full">
-                  <ChromaCardBody>
-                    <SpotlightCard className="project-spotlight-card" spotlightColor="rgba(59, 130, 246, 0.12)">
-                      <ChromaCardItem translateZ={40} className="project-number">
-                        <FuzzyText fontSize="1.45rem" color="var(--clay)" hoverIntensity={0.6} baseIntensity={0.12} enableHover={true} glitchMode={true}>
-                          04
-                        </FuzzyText>
-                      </ChromaCardItem>
-                      <div className="project-content">
-                        <h3>
-                          <ChromaCardItem translateZ={60} style={{ display: 'inline-block' }}>
-                            <ShinyText text="React Weather App" speed={3.5} shineColor="#a5f3fc" color="#ffffff" />
-                          </ChromaCardItem>
-                        </h3>
-                        <ChromaCardItem translateZ={45} as="p">
-                          A premium, dark-mode weather dashboard built with React 18 and Vite.
-                          Features WebGL liquid Aurora background rendering, interactive particle overlays, and glassmorphic hover animations.
-                        </ChromaCardItem>
-                        <ChromaCardItem translateZ={50} className="project-tags">
-                          <span>React & Vite</span>
-                          <span>WebGL (OGL)</span>
-                          <span>Glassmorphism</span>
-                          <span>OpenWeatherMap API</span>
-                        </ChromaCardItem>
-                      </div>
-                    </SpotlightCard>
-                  </ChromaCardBody>
-                </ChromaCardContainer>
+                <SpotlightCard className="project-spotlight-card" spotlightColor="rgba(248, 250, 252, 0.06)">
+                  <span className="project-number">04</span>
+                  <div className="project-content">
+                    <h3>React Weather App</h3>
+                    <p>
+                      A premium, dark-mode weather dashboard built with React 18 and Vite.
+                      Features WebGL liquid Aurora background rendering, interactive particle overlays, and glassmorphic hover animations.
+                    </p>
+                    <div className="project-tags">
+                      <span>React & Vite</span>
+                      <span>WebGL (OGL)</span>
+                      <span>Glassmorphism</span>
+                      <span>OpenWeatherMap API</span>
+                    </div>
+                  </div>
+                </SpotlightCard>
               </div>
             </div>
 
@@ -573,9 +455,6 @@ export default function App() {
             <h2>Tools I work with</h2>
           </div>
 
-          {/* Curated featured tools grid (Glass Tiles) */}
-          <GlassTiles items={featuredTools} />
-
           <div style={{ margin: '32px 0 48px', overflow: 'hidden' }}>
             <LogoLoop
               logos={techLogos}
@@ -586,30 +465,24 @@ export default function App() {
               hoverSpeed={0}
               scaleOnHover
               fadeOut
-              fadeOutColor="#09090e"
+              fadeOutColor="#030712"
               ariaLabel="Technology stack"
             />
           </div>
 
           <div className="skills-grid">
-            <CardContainer containerClassName="skill-3d-wrapper" className="w-full">
-              <CardBody className="skill-spotlight-card">
-                <CardItem translateZ={40} as="h3">Frontend</CardItem>
-                <CardItem translateZ={30} as="p">React.js, JavaScript, HTML5, CSS3, responsive design</CardItem>
-              </CardBody>
-            </CardContainer>
-            <CardContainer containerClassName="skill-3d-wrapper" className="w-full">
-              <CardBody className="skill-spotlight-card">
-                <CardItem translateZ={40} as="h3">Design and Tools</CardItem>
-                <CardItem translateZ={30} as="p">Figma, Git, GitHub, VS Code</CardItem>
-              </CardBody>
-            </CardContainer>
-            <CardContainer containerClassName="skill-3d-wrapper" className="w-full">
-              <CardBody className="skill-spotlight-card">
-                <CardItem translateZ={40} as="h3">Programming</CardItem>
-                <CardItem translateZ={30} as="p">Java, MySQL, OOP, data structures, problem solving</CardItem>
-              </CardBody>
-            </CardContainer>
+            <SpotlightCard className="skill-spotlight-card" spotlightColor="rgba(248, 250, 252, 0.06)">
+              <h3>Frontend</h3>
+              <p>React.js, JavaScript, HTML5, CSS3, responsive design</p>
+            </SpotlightCard>
+            <SpotlightCard className="skill-spotlight-card" spotlightColor="rgba(248, 250, 252, 0.06)">
+              <h3>Design and Tools</h3>
+              <p>Figma, Git, GitHub, VS Code</p>
+            </SpotlightCard>
+            <SpotlightCard className="skill-spotlight-card" spotlightColor="rgba(248, 250, 252, 0.06)">
+              <h3>Programming</h3>
+              <p>Java, MySQL, OOP, data structures, problem solving</p>
+            </SpotlightCard>
           </div>
         </section>
 
@@ -619,27 +492,33 @@ export default function App() {
             <h2>Education and internship</h2>
           </div>
           <div className="timeline">
-            <article>
-              <span>June 2024 to July 2024</span>
-              <h3>Cloud Computing Intern, Gateway Solutions</h3>
-              <p>
-                Assisted with AWS-based cloud infrastructure deployment and resource
-                optimization while learning real project workflows and team collaboration.
-              </p>
-            </article>
-            <article>
-              <span>Graduating 2026</span>
-              <h3>BE Computer Science and Engineering</h3>
-              <p>
-                Dr. Mahalingam College of Engineering and Technology, Pollachi.
-                Current CGPA: 8.2.
-              </p>
-            </article>
-            <article>
-              <span>NPTEL Swayam</span>
-              <h3>Certifications</h3>
-              <p>The Joy of Computing using Python and Soft Skills Certification.</p>
-            </article>
+            <SpotlightCard className="experience-card" spotlightColor="rgba(248, 250, 252, 0.06)">
+              <article>
+                <span>June 2024 to July 2024</span>
+                <h3>Cloud Computing Intern, Gateway Solutions</h3>
+                <p>
+                  Assisted with AWS-based cloud infrastructure deployment and resource
+                  optimization while learning real project workflows and team collaboration.
+                </p>
+              </article>
+            </SpotlightCard>
+            <SpotlightCard className="experience-card" spotlightColor="rgba(248, 250, 252, 0.06)">
+              <article>
+                <span>Graduating 2026</span>
+                <h3>BE Computer Science and Engineering</h3>
+                <p>
+                  Dr. Mahalingam College of Engineering and Technology, Pollachi.
+                  Current CGPA: 8.2.
+                </p>
+              </article>
+            </SpotlightCard>
+            <SpotlightCard className="experience-card" spotlightColor="rgba(248, 250, 252, 0.06)">
+              <article>
+                <span>NPTEL Swayam</span>
+                <h3>Certifications</h3>
+                <p>The Joy of Computing using Python and Soft Skills Certification.</p>
+              </article>
+            </SpotlightCard>
           </div>
         </section>
 
@@ -653,18 +532,10 @@ export default function App() {
             </p>
           </div>
           <div className="contact-actions">
-            <Magnet padding={15} magnetStrength={4}>
-              <a className="btn btn-primary" href="mailto:12k21rakeshkannam@gmail.com">Email Me</a>
-            </Magnet>
-            <Magnet padding={15} magnetStrength={4}>
-              <a className="btn btn-secondary" href="tel:+916369628215">Call</a>
-            </Magnet>
-            <Magnet padding={15} magnetStrength={4}>
-              <a className="text-link" href="https://github.com/Rakeshkanna1" target="_blank" rel="noreferrer">GitHub</a>
-            </Magnet>
-            <Magnet padding={15} magnetStrength={4}>
-              <a className="text-link" href="https://www.linkedin.com/in/rakesh-kanna-649b8b2b7/" target="_blank" rel="noreferrer">LinkedIn</a>
-            </Magnet>
+            <a className="btn btn-primary" href="mailto:12k21rakeshkannam@gmail.com">Email Me</a>
+            <a className="btn btn-secondary" href="tel:+916369628215">Call</a>
+            <a className="text-link" href="https://github.com/Rakeshkanna1" target="_blank" rel="noreferrer">GitHub</a>
+            <a className="text-link" href="https://www.linkedin.com/in/rakesh-kanna-649b8b2b7/" target="_blank" rel="noreferrer">LinkedIn</a>
           </div>
         </section>
       </main>
