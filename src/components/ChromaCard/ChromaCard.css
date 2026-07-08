@@ -1,0 +1,55 @@
+/* Chroma Card styling */
+.chroma-container-wrapper {
+  width: 100%;
+}
+
+.chroma-container {
+  width: 100%;
+  border-radius: 16px;
+  overflow: visible;
+}
+
+/* Background layers for chromatic edge effect */
+.chroma-layer {
+  position: absolute;
+  inset: -1px;
+  border-radius: 16px;
+  pointer-events: none;
+  opacity: 0;
+  mix-blend-mode: screen;
+  transition: opacity 0.3s cubic-bezier(0.25, 1, 0.5, 1),
+              transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  z-index: 1;
+}
+
+.chroma-layer.red {
+  border: 1.5px solid rgba(239, 68, 68, 0.65);
+  box-shadow: 0 0 8px rgba(239, 68, 68, 0.20);
+}
+
+.chroma-layer.cyan {
+  border: 1.5px solid rgba(6, 182, 212, 0.65);
+  box-shadow: 0 0 8px rgba(6, 182, 212, 0.20);
+}
+
+.chroma-layer.yellow {
+  border: 1.5px solid rgba(234, 179, 8, 0.65);
+  box-shadow: 0 0 8px rgba(234, 179, 8, 0.20);
+}
+
+/* Hover active states */
+.chroma-container.hovered .chroma-layer {
+  opacity: 0.55;
+}
+
+.chroma-container.hovered .chroma-layer.red {
+  transform: translate3d(-2px, -1.5px, 0);
+}
+
+.chroma-container.hovered .chroma-layer.cyan {
+  transform: translate3d(2px, 1.5px, 0);
+}
+
+.chroma-container.hovered .chroma-layer.yellow {
+  transform: translate3d(0px, -2px, 0);
+}
