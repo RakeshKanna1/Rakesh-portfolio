@@ -1,43 +1,38 @@
-# 👋 Hi, I'm Rakesh Kanna M
+# 👋 Hi, I'm Rakesh Kanna
 
 **Frontend developer in training @ TAP Academy, Bangalore** — building with HTML, CSS & AI tools.
 
-🔗 **Live Portfolio:** [https://RakeshKanna1.github.io/Rakesh-portfolio/](https://RakeshKanna1.github.io/Rakesh-portfolio/)
+🔗 **Live Portfolio:** https://RakeshKanna1.github.io/Rakesh-portfolio/
 
 ## 🧭 What's inside
 - **Hero section** — who I am in one line
 - **About section** — my story & photo
 - **Skills section** — HTML · CSS · AI-assisted development · Git & GitHub
-- **Projects section** — all 10 Tap Academy projects plus 3 personal resume projects with demo + code links
+- **Projects section** — all 10 of my live projects with demo + code links
 - **Contact section** — let's talk
 
-## 🗂 My Projects
-| # | Project | Category | Live | Code |
-|---|---------|----------|------|------|
-| 1 | Personal Portfolio | Tap Academy | [Live Demo](https://RakeshKanna1.github.io/Rakesh-portfolio/) | [GitHub Repo](https://github.com/RakeshKanna1/Rakesh-portfolio) |
-| 2 | E-commerce Website | Tap Academy | [Live Demo](https://RakeshKanna1.github.io/ecommerce/) | [GitHub Repo](https://github.com/RakeshKanna1/ecommerce) |
-| 3 | Food Delivery App | Tap Academy | [Live Demo](https://RakeshKanna1.github.io/food-delivery/) | [GitHub Repo](https://github.com/RakeshKanna1/food-delivery) |
-| 4 | Product Landing Page | Tap Academy | [Live Demo](https://RakeshKanna1.github.io/product-landing/) | [GitHub Repo](https://github.com/RakeshKanna1/product-landing) |
-| 5 | TAP Academy Clone | Tap Academy | [Live Demo](https://RakeshKanna1.github.io/skilltap/) | [GitHub Repo](https://github.com/RakeshKanna1/skilltap) |
-| 6 | College Fest Landing Page | Tap Academy | [Live Demo](https://RakeshKanna1.github.io/college-fest/) | [GitHub Repo](https://github.com/RakeshKanna1/college-fest) |
-| 7 | Instagram Clone | Tap Academy | [Live Demo](https://RakeshKanna1.github.io/instagram-clone/) | [GitHub Repo](https://github.com/RakeshKanna1/instagram-clone) |
-| 8 | LinkedIn Clone | Tap Academy | [Live Demo](https://RakeshKanna1.github.io/linkedin-clone/) | [GitHub Repo](https://github.com/RakeshKanna1/linkedin-clone) |
-| 9 | BeatFlow (Spotify Clone) | Tap Academy | [Live Demo](https://RakeshKanna1.github.io/beatflow/) | [GitHub Repo](https://github.com/RakeshKanna1/beatflow) |
-| 10 | CineWave (Netflix Clone) | Tap Academy | [Live Demo](https://RakeshKanna1.github.io/cinewave/) | [GitHub Repo](https://github.com/RakeshKanna1/cinewave) |
-| 11 | Weather Forecast App | Resume Project | — | [GitHub Repo](https://github.com/RakeshKanna1) |
-| 12 | To-Do List App | Resume Project | — | [GitHub Repo](https://github.com/RakeshKanna1) |
-| 13 | IoT Smart Home Automation | Resume Project | — | [GitHub Repo](https://github.com/RakeshKanna1) |
+## 🗂 My 10 Projects
+| # | Project | Live | Code |
+|---|---------|------|------|
+| 1 | Personal Portfolio | [Live Demo](https://RakeshKanna1.github.io/Rakesh-portfolio/) | [GitHub Repo](https://github.com/RakeshKanna1/Rakesh-portfolio) |
+| 2 | E-commerce Website | [Live Demo](https://RakeshKanna1.github.io/ecommerce/) | [GitHub Repo](https://github.com/RakeshKanna1/ecommerce) |
+| 3 | Food Delivery App | [Live Demo](https://RakeshKanna1.github.io/food-delivery/) | [GitHub Repo](https://github.com/RakeshKanna1/food-delivery) |
+| 4 | Product Landing Page | [Live Demo](https://RakeshKanna1.github.io/product-landing/) | [GitHub Repo](https://github.com/RakeshKanna1/product-landing) |
+| 5 | Tap Academy Clone | [Live Demo](https://RakeshKanna1.github.io/tap-clone/) | [GitHub Repo](https://github.com/RakeshKanna1/tap-clone) |
+| 6 | College Fest Landing Page | [Live Demo](https://RakeshKanna1.github.io/college-fest/) | [GitHub Repo](https://github.com/RakeshKanna1/college-fest) |
+| 7 | Instagram UI Clone | [Live Demo](https://RakeshKanna1.github.io/instagram-clone/) | [GitHub Repo](https://github.com/RakeshKanna1/instagram-clone) |
+| 8 | LinkedIn UI Clone | [Live Demo](https://RakeshKanna1.github.io/linkedin-clone/) | [GitHub Repo](https://github.com/RakeshKanna1/linkedin-clone) |
+| 9 | Spotify UI Clone (Beatflow) | [Live Demo](https://RakeshKanna1.github.io/spotify-clone/) | [GitHub Repo](https://github.com/RakeshKanna1/spotify-clone) |
+| 10| Netflix UI Clone (Cinewave) | [Live Demo](https://RakeshKanna1.github.io/netflix-clone/) | [GitHub Repo](https://github.com/RakeshKanna1/netflix-clone) |
 
 ## 🛠 Tech Stack
-Vanilla JS (ES6+) · HTML5 & CSS3 · Vite · GSAP Animations · HTML5 Canvas (Particles) · Deployed on GitHub Pages
+HTML5 · CSS3 · AI-assisted features (built with Google Antigravity) · Deployed on GitHub Pages
 
 ## 🤖 How I used AI
-I designed and structured the portfolio based on my updated resume details; I used Google Antigravity to build a highly interactive Vanilla JS/HTML/CSS portfolio with custom cursor trails, an interactive network-particle canvas background, spotlight hover effects, filterable project tabs, and dynamic stats counters.
+I designed and wrote the HTML/CSS myself; I used Google Antigravity to help structure the grids, add the smooth scrolling behavior, and verify cross-browser responsiveness.
 
 ## 📚 What I learned
-- Creating a highly interactive, responsive layout using Vanilla JS without React to demonstrate strong core front-end programming.
-- Building custom cursor trailing trails and a smooth, interactive network constellation background using HTML5 Canvas.
-- Leveraging Vite as a build tool for a Vanilla JS application.
+I learned the importance of responsive layout design, proper color/font pairing, and how to successfully manage and deploy multiple separate repositories on GitHub Pages.
 
 ---
 
