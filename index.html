@@ -1,17 +1,591 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Portfolio of Rakesh Kanna M, React Frontend Developer." />
-    <title>Rakesh Kanna M | Frontend Developer</title>
-    <!-- Google Fonts: Outfit (headings) & Inter (body) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfolio of Rakesh Kanna M, Software Engineer specializing in high-performance web interfaces and clean design.">
+  <title>Rakesh Kanna M | Software Engineer</title>
+  
+  <!-- Google Fonts: Outfit & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+  <!-- Fullscreen Interactive Loader Overlay -->
+  <div class="loader-overlay" id="loader-overlay">
+    <div class="loader-content">
+      <span class="loader-brand">&lt;RK <span class="accent-slash">/&gt;</span></span>
+      <div class="loader-bar-container">
+        <div class="loader-bar" id="loader-bar"></div>
+      </div>
+      <span class="loader-percentage" id="loader-percentage">0%</span>
+    </div>
+  </div>
+
+  <!-- Custom Scroll Progress Bar -->
+  <div class="scroll-progress" id="scroll-progress"></div>
+
+  <!-- Ambient Glowing Orbs -->
+  <div class="ambient-orb orb-1"></div>
+  <div class="ambient-orb orb-2"></div>
+  <div class="ambient-orb orb-3"></div>
+
+  <!-- Custom Interactive Morphing Cursor -->
+  <div class="custom-cursor" id="custom-cursor">
+    <span class="cursor-text" id="cursor-text"></span>
+  </div>
+  <div class="custom-cursor-dot" id="custom-cursor-dot"></div>
+
+  <!-- Interactive 3D Particles & Mesh Canvas -->
+  <canvas class="particles-canvas" id="particles-canvas"></canvas>
+
+  <!-- Sticky Glassmorphic Navbar -->
+  <header class="site-header" id="site-header">
+    <div class="header-container">
+      <a href="#home" class="brand" data-cursor-text="HOME">
+        <span class="brand-mark">&lt;RK</span><span class="brand-slash">/&gt;</span>
+      </a>
+      <nav class="nav-links" aria-label="Main Navigation">
+        <a href="#about" class="nav-link" data-cursor-text="ABOUT">About</a>
+        <a href="#skills" class="nav-link" data-cursor-text="SKILLS">Skills</a>
+        <a href="#work" class="nav-link" data-cursor-text="WORK">Projects</a>
+        <a href="#experience" class="nav-link" data-cursor-text="EXP">Experience</a>
+        <a href="#contact" class="nav-link" data-cursor-text="TALK">Contact</a>
+      </nav>
+      <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle Menu" data-cursor-text="MENU">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    
+    <!-- Mobile Menu -->
+    <nav class="mobile-nav" id="mobile-nav">
+      <a href="#about" class="mobile-nav-link">About</a>
+      <a href="#skills" class="mobile-nav-link">Skills</a>
+      <a href="#work" class="mobile-nav-link">Projects</a>
+      <a href="#experience" class="mobile-nav-link">Experience</a>
+      <a href="#contact" class="mobile-nav-link">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+      <div class="hero-container">
+        <div class="hero-content">
+          <div class="availability-badge" data-cursor-text="HELLO">
+            <span class="badge-dot"></span>
+            <span>Available for Internships &amp; Entry-level Roles</span>
+          </div>
+          <h1 class="hero-title">
+            <span class="greeting">Hi, I'm</span>
+            <span class="name decrypt-effect" data-text="Rakesh Kanna M">Rakesh Kanna M</span>
+          </h1>
+          <h2 class="hero-subtitle">Building High-Performance Web &amp; IoT Solutions.</h2>
+          <p class="hero-description">
+            Computer Science student passionate about crafting clean frontend architectures, responsive designs, and smooth animations. Dedicated to writing efficient, readable code.
+          </p>
+          <div class="hero-actions">
+            <a href="#work" class="btn btn-primary" data-cursor-text="GO">Explore Work</a>
+            <a href="/Rakesh_Kanna_Resume_Updated.pdf" target="_blank" class="btn btn-secondary" data-cursor-text="GET PDF">View Resume</a>
+          </div>
+          
+          <div class="profile-meta">
+            <span data-cursor-text="DEGREE">BE CSE 2026</span>
+            <span data-cursor-text="GRADE">CGPA 8.2</span>
+            <span data-cursor-text="CORE">JavaScript &amp; React</span>
+            <span data-cursor-text="CITY">Pollachi, India</span>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="photo-card card-spotlight" data-cursor-text="CLICK ME">
+            <div class="photo-inner">
+              <img src="/profile.jpg" alt="Rakesh Kanna M" class="profile-photo" id="profile-photo">
+            </div>
+            <div class="photo-info">
+              <span class="role">Software Engineer</span>
+              <h3>Rakesh Kanna M</h3>
+              <div class="social-pills">
+                <a href="mailto:12k21rakeshkannam@gmail.com" aria-label="Email" data-cursor-text="MAIL"><span class="icon">✉</span></a>
+                <a href="https://github.com/Rakeshkanna1" target="_blank" rel="noopener noreferrer" aria-label="GitHub" data-cursor-text="CODE"><span class="icon">🐙</span></a>
+                <a href="https://www.linkedin.com/in/rakesh-kanna-649b8b2b7/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" data-cursor-text="LINK"><span class="icon">🔗</span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section about-section" id="about">
+      <div class="container">
+        <p class="section-eyebrow">Biography</p>
+        <h2 class="section-title decrypt-effect" data-text="A software engineer with a product focus">A software engineer with a product focus</h2>
+        <div class="about-grid">
+          <div class="about-text">
+            <p>
+              I am a Computer Science and Engineering student at Dr. Mahalingam College of Engineering and Technology. I specialize in building responsive, modern user interfaces with smooth animations and robust state logic.
+            </p>
+            <p>
+              My goal is to collaborate with engineering teams to deploy premium, accessible, and clean software products. I am passionate about learning, debugging complex issues, and implementing performance optimization.
+            </p>
+          </div>
+          <div class="about-highlights">
+            <div class="highlight-item card-spotlight" data-cursor-text="LEARNING">
+              <h4>Education</h4>
+              <p><strong>B.E. Computer Science &amp; Engineering</strong></p>
+              <span class="meta-desc">Dr. Mahalingam College of Engineering and Technology (2022 - 2026)</span>
+            </div>
+            <div class="highlight-item card-spotlight" data-cursor-text="AWS CLOUD">
+              <h4>Latest Internship</h4>
+              <p><strong>Cloud Computing Intern</strong></p>
+              <span class="meta-desc">Gateway Solutions (June 2024 - July 2024)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="section skills-section" id="skills">
+      <div class="container">
+        <p class="section-eyebrow">Expertise</p>
+        <h2 class="section-title decrypt-effect" data-text="Technical Skills &amp; Stack">Technical Skills &amp; Stack</h2>
+        
+        <div class="skills-grid">
+          <!-- Card 1: Frontend -->
+          <div class="skill-group-card card-spotlight" data-cursor-text="UI/UX">
+            <h3>Frontend Development</h3>
+            <div class="skills-list">
+              <span class="skill-pill">HTML5</span>
+              <span class="skill-pill">CSS3</span>
+              <span class="skill-pill">JavaScript (ES6+)</span>
+              <span class="skill-pill">React.js</span>
+              <span class="skill-pill">Responsive Design</span>
+              <span class="skill-pill">Tailwind CSS</span>
+            </div>
+          </div>
+
+          <!-- Card 2: Programming & Logic -->
+          <div class="skill-group-card card-spotlight" data-cursor-text="LOGIC">
+            <h3>Programming &amp; Databases</h3>
+            <div class="skills-list">
+              <span class="skill-pill">Java</span>
+              <span class="skill-pill">MySQL</span>
+              <span class="skill-pill">Python</span>
+              <span class="skill-pill">OOP Concepts</span>
+              <span class="skill-pill">Data Structures</span>
+              <span class="skill-pill">Problem Solving</span>
+            </div>
+          </div>
+
+          <!-- Card 3: Tools & Cloud -->
+          <div class="skill-group-card card-spotlight" data-cursor-text="DEV OPS">
+            <h3>Tools &amp; Workflows</h3>
+            <div class="skills-list">
+              <span class="skill-pill">Git</span>
+              <span class="skill-pill">GitHub</span>
+              <span class="skill-pill">VS Code</span>
+              <span class="skill-pill">AWS Services</span>
+              <span class="skill-pill">NodeMCU &amp; IoT</span>
+              <span class="skill-pill">Vite</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="section projects-section" id="work">
+      <div class="container">
+        <p class="section-eyebrow">Showcase</p>
+        <h2 class="section-title decrypt-effect" data-text="Projects Showcase">Projects Showcase</h2>
+        
+        <!-- Filter Tabs -->
+        <div class="projects-filter">
+          <button class="filter-tab active" data-filter="all" data-cursor-text="ALL">All Projects</button>
+          <button class="filter-tab" data-filter="tap" data-cursor-text="TAP ACADEMY">Tap Academy (10)</button>
+          <button class="filter-tab" data-filter="personal" data-cursor-text="ACADEMIC &amp; IoT">Academic &amp; IoT (3)</button>
+        </div>
+
+        <div class="projects-grid" id="projects-grid">
+          <!-- Tap Project 1 -->
+          <article class="project-card card-spotlight" data-category="tap">
+            <span class="project-num">01</span>
+            <div class="project-card-content">
+              <h3>Personal Portfolio</h3>
+              <p>A premium, minimalist SaaS-inspired portfolio with interactive custom cursors, canvas particle systems, and spotlight hover animations.</p>
+              <div class="project-tags">
+                <span>Vite</span>
+                <span>Vanilla JS</span>
+                <span>GSAP</span>
+                <span>CSS Grid</span>
+              </div>
+              <div class="project-links">
+                <a href="https://RakeshKanna1.github.io/Rakesh-portfolio/" target="_blank" class="project-link primary" data-cursor-text="LIVE">Live Demo</a>
+                <a href="https://github.com/RakeshKanna1/Rakesh-portfolio" target="_blank" class="project-link secondary" data-cursor-text="CODE">GitHub</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Tap Project 2 -->
+          <article class="project-card card-spotlight" data-category="tap">
+            <span class="project-num">02</span>
+            <div class="project-card-content">
+              <h3>E-Commerce Website</h3>
+              <p>A fully responsive retail storefront featuring advanced product grids, cart additions, local storage persistence, and checkout logic.</p>
+              <div class="project-tags">
+                <span>HTML5</span>
+                <span>CSS3</span>
+                <span>JavaScript</span>
+              </div>
+              <div class="project-links">
+                <a href="https://RakeshKanna1.github.io/ecommerce/" target="_blank" class="project-link primary" data-cursor-text="LIVE">Live Demo</a>
+                <a href="https://github.com/RakeshKanna1/ecommerce" target="_blank" class="project-link secondary" data-cursor-text="CODE">GitHub</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Tap Project 3 -->
+          <article class="project-card card-spotlight" data-category="tap">
+            <span class="project-num">03</span>
+            <div class="project-card-content">
+              <h3>Food Delivery App</h3>
+              <p>An interactive food ordering interface with menu cards, vegatarian filters, cart calculations, and delivery checkout flows.</p>
+              <div class="project-tags">
+                <span>HTML5</span>
+                <span>CSS3</span>
+                <span>JavaScript</span>
+              </div>
+              <div class="project-links">
+                <a href="https://RakeshKanna1.github.io/food-delivery/" target="_blank" class="project-link primary" data-cursor-text="LIVE">Live Demo</a>
+                <a href="https://github.com/RakeshKanna1/food-delivery" target="_blank" class="project-link secondary" data-cursor-text="CODE">GitHub</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Tap Project 4 -->
+          <article class="project-card card-spotlight" data-category="tap">
+            <span class="project-num">04</span>
+            <div class="project-card-content">
+              <h3>Product Landing Page</h3>
+              <p>A dark-themed conversion-focused marketing page highlighting premium typography, product benefits grids, and a crisp checkout CTA.</p>
+              <div class="project-tags">
+                <span>HTML5</span>
+                <span>CSS3</span>
+                <span>JavaScript</span>
+              </div>
+              <div class="project-links">
+                <a href="https://RakeshKanna1.github.io/product-landing/" target="_blank" class="project-link primary" data-cursor-text="LIVE">Live Demo</a>
+                <a href="https://github.com/RakeshKanna1/product-landing" target="_blank" class="project-link secondary" data-cursor-text="CODE">GitHub</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Tap Project 5 -->
+          <article class="project-card card-spotlight" data-category="tap">
+            <span class="project-num">05</span>
+            <div class="project-card-content">
+              <h3>TAP Academy Clone</h3>
+              <p>A high-fidelity clone of the TAP Academy homepage mimicking spacing, grids, placements, banner cards, and course menus.</p>
+              <div class="project-tags">
+                <span>HTML5</span>
+                <span>CSS3</span>
+                <span>JavaScript</span>
+              </div>
+              <div class="project-links">
+                <a href="https://RakeshKanna1.github.io/skilltap/" target="_blank" class="project-link primary" data-cursor-text="LIVE">Live Demo</a>
+                <a href="https://github.com/RakeshKanna1/skilltap" target="_blank" class="project-link secondary" data-cursor-text="CODE">GitHub</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Tap Project 6 -->
+          <article class="project-card card-spotlight" data-category="tap">
+            <span class="project-num">06</span>
+            <div class="project-card-content">
+              <h3>College Fest Landing Page</h3>
+              <p>An energetic event portal showing live countdown clocks, event slots, timelines, maps, and dynamic registration form validations.</p>
+              <div class="project-tags">
+                <span>HTML5</span>
+                <span>CSS3</span>
+                <span>JavaScript</span>
+              </div>
+              <div class="project-links">
+                <a href="https://RakeshKanna1.github.io/college-fest/" target="_blank" class="project-link primary" data-cursor-text="LIVE">Live Demo</a>
+                <a href="https://github.com/RakeshKanna1/college-fest" target="_blank" class="project-link secondary" data-cursor-text="CODE">GitHub</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Tap Project 7 -->
+          <article class="project-card card-spotlight" data-category="tap">
+            <span class="project-num">07</span>
+            <div class="project-card-content">
+              <h3>Instagram Clone</h3>
+              <p>A pixel-perfect recreation of Instagram's web interface, including gradient stories, functional likes count, and personal profile tabs.</p>
+              <div class="project-tags">
+                <span>HTML5</span>
+                <span>CSS3</span>
+                <span>JavaScript</span>
+              </div>
+              <div class="project-links">
+                <a href="https://RakeshKanna1.github.io/instagram-clone/" target="_blank" class="project-link primary" data-cursor-text="LIVE">Live Demo</a>
+                <a href="https://github.com/RakeshKanna1/instagram-clone" target="_blank" class="project-link secondary" data-cursor-text="CODE">GitHub</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Tap Project 8 -->
+          <article class="project-card card-spotlight" data-category="tap">
+            <span class="project-num">08</span>
+            <div class="project-card-content">
+              <h3>LinkedIn Clone</h3>
+              <p>A professional 3-column feed replicating LinkedIn's web UI. Includes working comment expansions and like reaction toggles.</p>
+              <div class="project-tags">
+                <span>HTML5</span>
+                <span>CSS3</span>
+                <span>JavaScript</span>
+              </div>
+              <div class="project-links">
+                <a href="https://RakeshKanna1.github.io/linkedin-clone/" target="_blank" class="project-link primary" data-cursor-text="LIVE">Live Demo</a>
+                <a href="https://github.com/RakeshKanna1/linkedin-clone" target="_blank" class="project-link secondary" data-cursor-text="CODE">GitHub</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Tap Project 9 -->
+          <article class="project-card card-spotlight" data-category="tap">
+            <span class="project-num">09</span>
+            <div class="project-card-content">
+              <h3>Spotify Clone</h3>
+              <p>A music streaming shell mimicking Spotify's interface, complete with sidebar navigation, albums lists, and active music controller progress bars.</p>
+              <div class="project-tags">
+                <span>HTML5</span>
+                <span>CSS3</span>
+                <span>JavaScript</span>
+              </div>
+              <div class="project-links">
+                <a href="https://RakeshKanna1.github.io/beatflow/" target="_blank" class="project-link primary" data-cursor-text="LIVE">Live Demo</a>
+                <a href="https://github.com/RakeshKanna1/beatflow" target="_blank" class="project-link secondary" data-cursor-text="CODE">GitHub</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Tap Project 10 -->
+          <article class="project-card card-spotlight" data-category="tap">
+            <span class="project-num">10</span>
+            <div class="project-card-content">
+              <h3>Netflix Clone</h3>
+              <p>A movie streaming UI with hero trailers, card listings, slider grids with hover enlargement, and descriptions dialog overlays.</p>
+              <div class="project-tags">
+                <span>HTML5</span>
+                <span>CSS3</span>
+                <span>JavaScript</span>
+              </div>
+              <div class="project-links">
+                <a href="https://RakeshKanna1.github.io/cinewave/" target="_blank" class="project-link primary" data-cursor-text="LIVE">Live Demo</a>
+                <a href="https://github.com/RakeshKanna1/cinewave" target="_blank" class="project-link secondary" data-cursor-text="CODE">GitHub</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Personal Resume Project 1 -->
+          <article class="project-card card-spotlight" data-category="personal">
+            <span class="project-num">11</span>
+            <div class="project-card-content">
+              <h3>Weather Forecast App</h3>
+              <p>A responsive weather application checking REST APIs to output real-time temperature, humidity, and atmospheric conditions based on location search.</p>
+              <div class="project-tags">
+                <span>React.js</span>
+                <span>OpenWeather API</span>
+                <span>CSS Grid</span>
+              </div>
+              <div class="project-links">
+                <span class="project-link disabled">Resume Project</span>
+                <a href="https://github.com/RakeshKanna1" target="_blank" class="project-link secondary" data-cursor-text="CODE">GitHub</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Personal Resume Project 2 -->
+          <article class="project-card card-spotlight" data-category="personal">
+            <span class="project-num">12</span>
+            <div class="project-card-content">
+              <h3>To-Do List App</h3>
+              <p>A clean task manager featuring item additions, deletions, state updates, and status toggles for managing daily deliverables.</p>
+              <div class="project-tags">
+                <span>React.js</span>
+                <span>Local Storage</span>
+                <span>CSS Flexbox</span>
+              </div>
+              <div class="project-links">
+                <span class="project-link disabled">Resume Project</span>
+                <a href="https://github.com/RakeshKanna1" target="_blank" class="project-link secondary" data-cursor-text="CODE">GitHub</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Personal Resume Project 3 -->
+          <article class="project-card card-spotlight" data-category="personal">
+            <span class="project-num">13</span>
+            <div class="project-card-content">
+              <h3>IoT Smart Home Automation</h3>
+              <p>Engineered a custom home automation system utilizing NodeMCU microcontrollers and sensors to trigger electrical systems over local networks.</p>
+              <div class="project-tags">
+                <span>NodeMCU</span>
+                <span>Arduino C++</span>
+                <span>Sensors</span>
+                <span>IoT</span>
+              </div>
+              <div class="project-links">
+                <span class="project-link disabled">Resume Project</span>
+                <a href="https://github.com/RakeshKanna1" target="_blank" class="project-link secondary" data-cursor-text="CODE">GitHub</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="section experience-section" id="experience">
+      <div class="container">
+        <p class="section-eyebrow">History</p>
+        <h2 class="section-title decrypt-effect" data-text="Timeline &amp; Experience">Timeline &amp; Experience</h2>
+        
+        <div class="timeline">
+          <!-- Item 1: College -->
+          <div class="timeline-item card-spotlight" data-cursor-text="COLLEGE">
+            <span class="time-range">2022 - 2026</span>
+            <h3>B.E. Computer Science and Engineering</h3>
+            <h4>Dr. Mahalingam College of Engineering and Technology, Pollachi</h4>
+            <p>Engaged in advanced coursework covering Algorithms, Object-Oriented Programming, Database Management Systems, and Software Architectures. Maintained a CGPA of 8.2.</p>
+          </div>
+
+          <!-- Item 2: Internship -->
+          <div class="timeline-item card-spotlight" data-cursor-text="INTERN">
+            <span class="time-range">June 2024 - July 2024</span>
+            <h3>Cloud Computing Intern</h3>
+            <h4>Gateway Solutions</h4>
+            <p>Assisted in deploying scalable cloud infrastructure workflows using AWS (Amazon Web Services). Contributed to server configurations, security protocols, and resource optimization processes.</p>
+          </div>
+
+          <!-- Item 3: Certifications -->
+          <div class="timeline-item card-spotlight" data-cursor-text="CERTIFICATE">
+            <span class="time-range">Certifications</span>
+            <h3>NPTEL Swayam Certifications</h3>
+            <h4>NPTEL</h4>
+            <p>Successfully completed professional certifications including "The Joy of Computing using Python" and "Soft Skills Certification".</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="section stats-section">
+      <div class="container stats-grid">
+        <div class="stat-card card-spotlight" data-cursor-text="SHIPPED">
+          <div class="stat-num" data-target="13">0</div>
+          <div class="stat-label">Projects Completed</div>
+        </div>
+        <div class="stat-card card-spotlight" data-cursor-text="LEARNT">
+          <div class="stat-num" data-target="500">0</div>
+          <div class="stat-label">Hours Learning</div>
+        </div>
+        <div class="stat-card card-spotlight" data-cursor-text="STACK">
+          <div class="stat-num" data-target="15">0</div>
+          <div class="stat-label">Technologies Mastered</div>
+        </div>
+        <div class="stat-card card-spotlight" data-cursor-text="DSA">
+          <div class="stat-num" data-target="150">0</div>
+          <div class="stat-label">DSA Problems Solved</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact-section" id="contact">
+      <div class="container">
+        <p class="section-eyebrow">Connect</p>
+        <h2 class="section-title decrypt-effect" data-text="Let's build together">Let's build together</h2>
+        
+        <div class="contact-grid">
+          <div class="contact-info">
+            <p>Open to frontend developer internships, UI intern roles, and entry-level software engineering positions. Drop a line if you want to collaborate.</p>
+            
+            <div class="contact-details">
+              <a href="mailto:12k21rakeshkannam@gmail.com" class="contact-card card-spotlight" data-cursor-text="WRITE">
+                <span class="contact-icon">✉</span>
+                <div class="contact-meta">
+                  <span class="label">Email</span>
+                  <span class="val">12k21rakeshkannam@gmail.com</span>
+                </div>
+              </a>
+              <a href="tel:+916369628215" class="contact-card card-spotlight" data-cursor-text="DIAL">
+                <span class="contact-icon">📞</span>
+                <div class="contact-meta">
+                  <span class="label">Call</span>
+                  <span class="val">+91 63696 28215</span>
+                </div>
+              </a>
+            </div>
+          </div>
+          
+          <form class="contact-form card-spotlight" id="contact-form" action="#" method="POST" novalidate>
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" placeholder="Your Name" required data-cursor-text="TYPE">
+              <span class="error-msg" id="name-error"></span>
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="email@example.com" required data-cursor-text="TYPE">
+              <span class="error-msg" id="email-error"></span>
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="5" placeholder="Project details or questions..." required data-cursor-text="TYPE"></textarea>
+              <span class="error-msg" id="message-error"></span>
+            </div>
+            <button type="submit" class="btn btn-primary btn-submit" data-cursor-text="SEND">
+              <span>Send Message</span>
+              <svg class="submit-spinner" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="display: none;">
+                <circle cx="12" cy="12" r="10" stroke-opacity="0.25"></circle>
+                <path d="M4 12a8 8 0 0 1 8-8v0C7.58 4 4 7.58 4 12z"></path>
+              </svg>
+            </button>
+            <div class="success-message" id="success-message" style="display: none;">
+              ✓ Message sent! Thank you, Rakesh will get back to you shortly.
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-container">
+      <p>&copy; 2026 Rakesh Kanna M. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="https://github.com/Rakeshkanna1" target="_blank" rel="noopener noreferrer" data-cursor-text="CODE">GitHub</a>
+        <a href="https://www.linkedin.com/in/rakesh-kanna-649b8b2b7/" target="_blank" rel="noopener noreferrer" data-cursor-text="LINK">LinkedIn</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- GSAP Core & ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <!-- Application logic -->
+  <script type="module" src="/main.js"></script>
+</body>
 </html>
